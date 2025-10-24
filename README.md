@@ -1,6 +1,6 @@
 # HeishaMon Rules: DHW Sterilization Improvements
 
-This repository contains ESPEasy-style rules tailored for **HeishaMon**-driven Panasonic Aquarea systems. The focus is ensuring **DHW sterilization reliably exceeds 50 °C** by:
+This repository contains rules tailored for **HeishaMon**-driven Panasonic Aquarea systems. The focus is ensuring **DHW sterilization reliably exceeds 50 °C** by:
 
 - Disabling **Quiet Mode** during active sterilization (`@Sterilization_State == 1`), so the compressor can ramp.
 - Allowing higher **pump-duty headroom** (clamped to 140) on the **DHW path** to improve heat transfer, while keeping the dynamic safeguards for **space heating (CH)**.
@@ -14,11 +14,11 @@ This repository contains ESPEasy-style rules tailored for **HeishaMon**-driven P
 - `on QuietMode`: sets Quiet Mode to `0` while sterilizing; otherwise follows your regular dynamic logic.
 - `on pumpDuty`: clamps `SetMaxPumpDuty` to **120–140**. DHW/sterilization get the higher ceiling; CH keeps the dynamic cap and ratio-based protection.
 
-These rules interact with HeishaMon over MQTT topics (e.g., `SetQuietMode`, `Quiet_Mode_Level`, `SetMaxPumpDuty`, `Operating_Mode_State`, etc.). Adjust topic names in your ESPEasy device setup if you use non-default naming.
+These rules interact with HeishaMon over MQTT topics (e.g., `SetQuietMode`, `Quiet_Mode_Level`, `SetMaxPumpDuty`, `Operating_Mode_State`, etc.). Adjust topic names in your Heishamon device setup if you use non-default naming.
 
 ## Install
 
-1. Open your ESPEasy rules page (or wherever you run your rules against HeishaMon topics).
+1. Open your Heishamon rules page (or wherever you run your rules against HeishaMon topics).
 2. Paste the contents of `Heishamon_rules20241129b.txt`.
 3. Save & reboot the node, or reload rules.
 4. Trigger a sterilization cycle (or wait for the scheduler) and observe:
